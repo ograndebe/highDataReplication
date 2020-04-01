@@ -15,5 +15,7 @@
   - TODO - multi pages using configuration files, not code.
 
 ## how i run this
- - clone project
+ - clone this project
  - docker-compose up -d --build
+ - docker-compose down (to stop and remove all containers)
+ - as example try: http://localhost:8080/hdr/advfn/6
