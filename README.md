@@ -14,7 +14,7 @@
   - Uses a timer to update redis with the browser tables (converted to JSON)
   - TODO - multi pages using configuration files, not code.
 
-## how i run this
+## how do i run this
  - clone this project
  - docker-compose up -d --build
  - docker-compose down (to stop and remove all containers)
