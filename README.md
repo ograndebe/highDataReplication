@@ -1,6 +1,7 @@
 # High Data Replication
  - Hosts a High Scalable REST service of existing webpages (more specificly tables inside webpages)
  - I know that the name is bad
+ - this is a CONCEPT project and i know that there a lot of improvement to do.
  
 ## how it works
  - The docker composition (it can be put in kubernetes, load balanced and everithing ) ups 3 containers
