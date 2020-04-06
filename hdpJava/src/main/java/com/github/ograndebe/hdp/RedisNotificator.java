@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 @Component
 public class RedisNotificator implements PageObserver {
@@ -24,7 +25,7 @@ public class RedisNotificator implements PageObserver {
     private RedisFactory redisFactory;
 
     @Autowired
-    private Jedis jedis;
+    private JedisPool jedisPool;
 
     @Override
     public void pageChanged(String pageId, String pageSource) {
@@ -43,6 +44,9 @@ public class RedisNotificator implements PageObserver {
 
     private void updateRedis(String pageId, int tableId, String json) {
         logger.info("Table[{}] in Page[{}] was updated on Redis (size: {})", tableId, pageId, json.length());
-        jedis.set(String.format("values:%s:%s", pageId, tableId), json);
+        try (final Jedis jedis = jedisPool.getResource()) {
+            jedis.set(String.format("values:%s:%s", pageId, tableId), json);
+        }
     }
+
 }

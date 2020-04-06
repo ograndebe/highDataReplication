@@ -1,6 +1,6 @@
 FROM openjdk:14-jdk-buster
 
-COPY src /src/src
+RUN mkdir /src 
 COPY mvnw /src 
 COPY pom.xml /src
 COPY .mvn /src/.mvn
@@ -9,6 +9,7 @@ RUN cd /src &&\
     chmod a+x mvnw &&\
     ./mvnw clean
     
+COPY src /src/src
 RUN cd /src &&\
     ./mvnw install -DskipTests
     
